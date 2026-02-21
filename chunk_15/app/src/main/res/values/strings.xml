@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ScienceLift</string>
+    <string name="title_activity_main">ScienceLift</string>
+    <string name="package_name">com.sciencelift.app</string>
+    <string name="custom_url_scheme">com.sciencelift.app</string>
+</resources>
