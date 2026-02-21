@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScienceLift | AI Workout Architect</title>
+    <meta name="theme-color" content="#1a0033">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ScienceLift">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <img src="assets/sciencelift-logo.svg" alt="ScienceLift logo" class="brand-logo">
+            <h1>SCIEN<span>CE</span>LIFT</h1>
+            <p>Data-Driven Hypertrophy Plans</p>
+            <small class="creator-label">By David - Creator of this site</small>
+            <small id="auth-status">Not signed in</small>
+            <nav class="page-nav">
+                <button onclick="showPage('mainPage')" class="nav-btn active" id="navMain">Main</button>
+                <button onclick="showPage('plannerPage')" class="nav-btn" id="navPlanner">Builder</button>
+                <button onclick="showPage('settingsPage')" class="nav-btn" id="navSettings">Settings</button>
+            </nav>
+        </header>
+
+        <main class="pages">
+            <section id="mainPage" class="page active">
+                <div class="main-card">
+                    <header>
+                        <h1>Get to Pumping</h1>
+                        <p style="opacity: 0.7;">Train smart, eat with purpose, and build muscle with a science-driven plan.</p>
+                    </header>
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="showPage('plannerPage')">Start Building My Plan</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="plannerPage" class="page">
+                <div class="main-card">
+                    <header>
+                        <h1>SCIENCE<span style="color:var(--electric-purple)">LIFT</span></h1>
+                        <p style="opacity: 0.6;">Precision Hypertrophy Architect</p>
+                    </header>
+
+                    <div class="input-grid">
+                        <select id="split">
+                            <option value="4">4 Days (Upper/Lower)</option>
+                            <option value="5">5 Days (PPL)</option>
+                        </select>
+                        <input type="number" id="weight" placeholder="Weight (kg)">
+                        <select id="weightUnit">
+                            <option value="kg" selected>kg</option>
+                            <option value="lb">lb</option>
+                        </select>
+                        <input type="number" id="height" placeholder="Height (cm)">
+                        <select id="heightUnit">
+                            <option value="cm" selected>cm</option>
+                            <option value="in">in</option>
+                        </select>
+                        <input type="number" id="age" placeholder="Age">
+                        <select id="goal">
+                            <option value="bulk">Lean Bulk (+300)</option>
+                            <option value="cut">Aggressive Cut (-500)</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <p style="font-size: 0.8rem; color: var(--electric-purple);">Optional: 1-Rep Maxes</p>
+                        <div class="input-grid" style="margin-top: 0.5rem;">
+                            <input type="number" id="benchPR" placeholder="Bench Press">
+                            <input type="number" id="squatPR" placeholder="Squat">
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="generate()">Architect My Plan</button>
+                        <a href="ScienceLift-debug.apk" download class="btn btn-secondary btn-link">Download APK</a>
+                    </div>
+
+                    <input type="hidden" id="days" value="4">
+                    <input type="hidden" id="splitMode" value="optimal">
+                    <input type="hidden" id="targetWeight" value="">
+                </div>
+            </section>
+
+            <section id="planPage" class="page">
+                <section class="config-panel settings-panel">
+                    <h2>Your Plan</h2>
+                    <div class="button-row">
+                        <button onclick="openPlan()" class="btn-generate">Open Routine</button>
+                        <button onclick="openDietSchedule()" class="btn-generate btn-open">Open Diet</button>
+                        <button onclick="savePlanForUser(true)" class="btn-generate btn-auth">Save Plan</button>
+                        <button onclick="showPage('plannerPage')" class="btn-generate btn-open">Back To Builder</button>
+                    </div>
+                </section>
+                <div id="diet-display" class="diet-card"></div>
+                <div id="workout-display" class="plan-grid"></div>
+            </section>
+
+            <section id="authPage" class="page">
+                <section class="config-panel auth-panel">
+                    <h2>Account</h2>
+                    <div class="user-stats">
+                        <input type="text" id="username" placeholder="Username">
+                        <input type="password" id="password" placeholder="Password">
+                    </div>
+                    <div class="button-row">
+                        <button onclick="signIn()" class="btn-generate btn-auth">Sign In</button>
+                        <button onclick="createAccount()" class="btn-generate">Create Account</button>
+                        <button onclick="signOut()" class="btn-generate btn-open">Sign Out</button>
+                    </div>
+                    <small>Accounts are stored locally in your browser on this device.</small>
+                </section>
+            </section>
+
+            <section id="settingsPage" class="page">
+                <section class="config-panel settings-panel">
+                    <h2>Website Settings</h2>
+                    <div class="user-stats">
+                        <select id="defaultWeightUnit">
+                            <option value="kg">Default Weight Unit: kg</option>
+                            <option value="lb">Default Weight Unit: lb</option>
+                        </select>
+                        <select id="defaultHeightUnit">
+                            <option value="cm">Default Height Unit: cm</option>
+                            <option value="in">Default Height Unit: in</option>
+                        </select>
+                        <select id="autoSaveSetting">
+                            <option value="on">Auto Save: On</option>
+                            <option value="off">Auto Save: Off</option>
+                        </select>
+                        <select id="autoResearchSetting">
+                            <option value="on">Auto Research Sync: On</option>
+                            <option value="off">Auto Research Sync: Off</option>
+                        </select>
+                        <select id="themeSetting">
+                            <option value="light">Theme: Light</option>
+                            <option value="dark">Theme: Dark</option>
+                        </select>
+                    </div>
+                    <div class="button-row">
+                        <button onclick="saveSettings(true)" class="btn-generate">Save Settings</button>
+                        <button onclick="syncResearch(true, true)" class="btn-generate">Sync Research Now</button>
+                        <button onclick="syncLifterOpinions(true, true)" class="btn-generate">Sync Lifter Opinions</button>
+                        <button id="installBtn" class="btn-generate btn-open">Download App</button>
+                        <a href="ScienceLift-debug.apk" download class="btn-generate btn-link">Download APK File</a>
+                        <button onclick="showPage('authPage')" class="btn-generate btn-open">Open Account</button>
+                    </div>
+                    <small id="install-help">On iPhone/iPad: Share -> Add to Home Screen.</small>
+                    <div id="research-display" class="diet-card"></div>
+                    <div id="opinions-display" class="diet-card"></div>
+                </section>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

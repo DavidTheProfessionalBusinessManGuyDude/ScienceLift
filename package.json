@@ -1,0 +1,29 @@
+{
+  "name": "workoutthemmuscles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "sync:web": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"New-Item -ItemType Directory -Force www, www/icons | Out-Null; Copy-Item index.html,style.css,script.js,manifest.json,sw.js -Destination www -Force; Copy-Item icons/* -Destination www/icons -Force\"",
+    "sync:android": "npm run sync:web && npx cap sync android",
+    "sync:ios": "npm run sync:web && npx cap sync ios",
+    "open:android": "npx cap open android",
+    "open:ios": "npx cap open ios",
+    "build:android:debug": "npm run sync:android && cd android && gradlew.bat assembleDebug",
+    "build:android:release:apk": "npm run sync:android && cd android && gradlew.bat assembleRelease",
+    "build:android:release:aab": "npm run sync:android && cd android && gradlew.bat bundleRelease"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@capacitor/android": "^8.1.0",
+    "@capacitor/cli": "^8.1.0",
+    "@capacitor/core": "^8.1.0",
+    "@capacitor/ios": "^8.1.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5"
+  }
+}
