@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" role="img" aria-label="ScienceLift logo">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0d"/>
+      <stop offset="100%" stop-color="#101114"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#8f4dff"/>
+      <stop offset="100%" stop-color="#19c36b"/>
+    </linearGradient>
+    <linearGradient id="type" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#8f4dff"/>
+      <stop offset="100%" stop-color="#25d47a"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="10" y="10" width="900" height="200" rx="32" fill="url(#bg)" />
+  <rect x="36" y="36" width="150" height="150" rx="24" fill="#0d0d12" stroke="#1e1f24" />
+
+  <!-- Minimal bar + monogram -->
+  <rect x="58" y="108" width="106" height="6" rx="3" fill="url(#accent)" />
+  <rect x="52" y="98" width="8" height="26" rx="2" fill="#7e45e0" />
+  <rect x="162" y="98" width="8" height="26" rx="2" fill="#19b364" />
+  <path d="M78 78h38v14H92v12h20v14H92v16H78z" fill="#8f4dff"/>
+  <path d="M120 78h14v56h26v14h-40z" fill="#19c36b"/>
+
+  <text x="216" y="115" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="68" font-weight="800" fill="url(#type)" letter-spacing="2">
+    SCIENCELIFT
+  </text>
+  <text x="220" y="154" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="20" font-weight="600" fill="#2aa96a" letter-spacing="1.4">
+    SCIENCE-BASED LIFTING
+  </text>
+</svg>
