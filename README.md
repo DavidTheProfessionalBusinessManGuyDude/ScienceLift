@@ -1,33 +1,63 @@
-# ScienceLift
+# ScienceLift (Easy Guide)
 
-ScienceLift is a science-based lifting planner with diet targets, routine generation, settings, and mobile/PWA support.
+ScienceLift helps you build a workout plan and a diet plan.
 
-## Quick Start (Local)
+## What this app does
 
-1. Install dependencies:
-```bash
-npm install
-```
-2. Run a local server from this folder (example with VS Code Live Server or any static server).
-3. Open `index.html` in the browser served by that local server.
+- Makes a workout routine for you
+- Gives calorie and macro targets (protein, carbs, fats)
+- Lets you open your routine and diet pages
+- Works as a website
 
-## GitHub Upload Checklist
+## Files you need
 
-- App entry files are in repo root: `index.html`, `style.css`, `script.js`.
-- PWA files are included: `manifest.json`, `sw.js`, `icons/`.
-- Large build artifacts (`.apk`, `.aab`) are ignored by default.
-- Auto deploy workflow is included at `.github/workflows/pages.yml`.
+These are the main files:
 
-## Deploy to GitHub Pages
+- `index.html` (the page)
+- `style.css` (the look/colors)
+- `script.js` (the app logic)
 
-1. Create a GitHub repo and push this project.
-2. In GitHub, go to:
-`Settings -> Pages -> Build and deployment -> Source: GitHub Actions`
-3. The included workflow will deploy on push to `master` or `main`.
+## How to run it on your computer
 
-After deploy, your site URL will be:
-`https://<your-username>.github.io/<repo-name>/`
+1. Open this folder in VS Code.
+2. Open `index.html`.
+3. Right-click and choose `Open with Live Server` (or use any local server).
+4. The app opens in your browser.
 
-## Mobile Builds (Capacitor)
+If you do not have Live Server, install the VS Code extension called `Live Server`.
 
-See `BUILD_MOBILE.md` for Android/iOS build steps.
+## How to use the app
+
+1. Enter your:
+- weight
+- height
+- age
+- goal (bulk, cut, or maintain)
+2. (Optional) Enter bench/squat PR.
+3. Click `Architect My Plan`.
+4. Open your routine and diet sections.
+5. Save your plan.
+
+## Put it on GitHub Pages
+
+1. Upload this project to a GitHub repo.
+2. In GitHub, open:
+`Settings -> Pages`
+3. Set Source to `GitHub Actions`.
+4. Keep `.github/workflows/pages.yml` in your repo.
+5. Push your code.
+
+GitHub will build the site for you.
+
+Your link will look like:
+`https://YOUR-USERNAME.github.io/YOUR-REPO/`
+
+## Phone install (website app)
+
+After the site is live:
+
+1. Open the site on your phone browser.
+2. Tap browser menu.
+3. Tap `Add to Home Screen` or `Install App`.
+
+Now it acts like an app icon on your phone.
